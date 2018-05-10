@@ -1,6 +1,7 @@
-title: Welcome to Nap Labs!
+_model: home
+---
+title: Hello
 ---
 body:
 
-This is a basic demo website that shows how to use Lektor for a basic
-website with some pages and a blog.
+Welcome to my laboratory where I'm trying out different experiments!

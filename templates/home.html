@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+  {% for image in this.attachments.images %}
+  <a href="{{ image.original }}">
+    <img class="fit" src="{{ image | url }}"{% if image.description %} alt="{{ image.description }}" title="{{ image.description }}" {% endif %} />
+  </a>
+  {% endfor %}
+  
+  {{ this.body }}
+{% endblock body %}

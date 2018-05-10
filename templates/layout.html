@@ -1,31 +1,60 @@
 <!doctype html>
-<html>
+<html class="no-js" lang="en">
 <head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107992935-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-107992935-1');
+  </script>
+  
   <meta charset="utf-8">
-  <link rel="stylesheet" href="{{ '/static/style.css'|url }}">
-  <title>{% block title %}Welcome{% endblock %} — Nap Labs</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}Welcome{% endblock %} | Nap Labs</title>
+  <meta name="description" content="Where Nap tinkers with things and makes random stuff.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="{{ '/static/images/icon.png' | url }}">
+  <link rel="shortcut icon" href="{{ '/static/images/icon.png' | url }}">
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ '/static/styles/site.css' | url }}">
+  
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  {% block extra_head %}{% endblock extra_head %}
 </head>
 <body>
-  <header>
-    <h1>Nap Labs</h1>
-    <nav>
-      <ul class="nav navbar-nav">
-        <li{% if this._path == '/' %} class="active"{% endif %}><a href="{{ '/'|url }}">Welcome</a></li>
-        {% for href, title in [
-          ['/blog', 'Blog'],
-          ['/projects', 'Projects'],
-          ['/about', 'About']
-        ] %}
-          <li{% if this.is_child_of(href) %} class="active"{% endif %}><a href="{{ href|url }}">{{ title }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
-  <div class="page">
-    {% block body %}{% endblock body %}
-  </div>
-  <footer>
-    &copy; Copyright 2018 by Nap Joseph Calub.
-  </footer>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+  
+  <section class="section">
+    <header>
+      <a href="{{ '/' | url }}"><img src="{{ '/static/images/logo.png' | url }}"></a>
+      <nav>
+        <ul>
+          {% for href, title in [
+            ['/experiments', 'Experiments'],
+            ['/about', 'About']
+          ] %}
+            <li{% if this.is_child_of(href) %} class="active"{% endif %}><a href="{{ href | url }}">{{ title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
+    
+    <div class="container">
+      {% block body %}{% endblock body %}
+    </div>
+    
+    <footer>
+      &copy; Copyright 2018 by Nap Joseph Calub.
+    </footer>
+  </section>
+  
+  {% block extra_body %}{% endblock extra_body %}
 </body>
 </html>
